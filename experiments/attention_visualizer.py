@@ -1,8 +1,6 @@
 """
 Attention Mechanism Visualizer — Understand how transformer attention works.
 
-Inspired by: LLMs-from-scratch (Ch. 3 - Attention Mechanisms)
-
 Usage:
     python experiments/attention_visualizer.py
 """
@@ -133,9 +131,9 @@ def visualize_attention_ascii(weights, tokens, title="Attention Weights"):
 
 
 if __name__ == "__main__":
-    print("=" * 60)
-    print("🔍 Attention Mechanism Visualizer")
-    print("=" * 60)
+    print("-" * 60)
+    print("Attention Mechanism Visualizer")
+    print("-" * 60)
 
     # Simulate a simple sentence
     tokens = ["The", "cat", "sat", "on", "mat"]
@@ -146,8 +144,8 @@ if __name__ == "__main__":
     np.random.seed(42)
     X = np.random.randn(1, seq_len, d_model)  # batch=1
 
-    # === Demo 1: Basic Self-Attention ===
-    print("\n📌 Demo 1: Self-Attention (no mask)")
+    # --- Demo 1: Basic Self-Attention ---
+    print("\nDemo 1: Self-Attention (no mask)")
     Q = X
     K = X
     V = X
@@ -155,15 +153,15 @@ if __name__ == "__main__":
     visualize_attention_ascii(weights, tokens, "Self-Attention Weights")
     print(f"\nOutput shape: {output.shape}")
 
-    # === Demo 2: Causal (GPT-style) Attention ===
-    print("\n📌 Demo 2: Causal Attention (GPT-style)")
+    # --- Demo 2: Causal (GPT-style) Attention ---
+    print("\nDemo 2: Causal Attention (GPT-style)")
     mask = create_causal_mask(seq_len)
     output_causal, weights_causal = scaled_dot_product_attention(Q, K, V, mask=mask[np.newaxis, :, :])
     visualize_attention_ascii(weights_causal, tokens, "Causal Attention Weights")
     print("  ↑ Each token can only attend to previous tokens (lower triangle)")
 
-    # === Demo 3: Multi-Head Attention ===
-    print("\n📌 Demo 3: Multi-Head Attention (4 heads)")
+    # --- Demo 3: Multi-Head Attention ---
+    print("\nDemo 3: Multi-Head Attention (4 heads)")
     mha_output, head_weights = multi_head_attention(X, n_heads=4)
     print(f"\nOutput shape: {mha_output.shape}")
     print(f"Number of heads: {len(head_weights)}")
