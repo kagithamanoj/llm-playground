@@ -1,0 +1,29 @@
+# Byte-compiled
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+.env
+.env.local
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.ipynb_checkpoints/
+*.log
+logs/
+
+# Model files
+*.bin
+*.pt
+*.pth
+*.gguf
+*.safetensors
+
+# Output
+outputs/
+results/
